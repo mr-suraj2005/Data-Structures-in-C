@@ -1,0 +1,28 @@
+#include<stdio.h>
+long fact(int n) { 
+    if(n == 0)
+        return 1;
+    else
+        return (long)n * fact(n - 1);
+}
+long nCr(int n, int r) {
+    if (r < 0 || r > n) { 
+        return 0; 
+    }
+    return fact(n) / (fact(r) * fact(n - r));
+}
+int main() {
+    int rows;
+    printf("Enter rows: "); 
+    scanf("%d", &rows);
+    for(int i = 0; i < rows; i++) {
+        for(int sp = 0; sp < rows - 1 - i; sp++) {
+            printf("  "); 
+        }
+        for(int j = 0; j <= i; j++) {
+            printf("%4ld", nCr(i, j)); 
+        }
+        printf("\n"); 
+    }
+    return 0;
+}
